@@ -15,4 +15,6 @@ jobs:
     - name: Run TestProject Agent
       run:
         docker-compose -f docker-compose.yml up -d
-    - run: pytest
+    - run:
+        docker exec -w /fastapi_app fastapi_app pytest tests/
+
