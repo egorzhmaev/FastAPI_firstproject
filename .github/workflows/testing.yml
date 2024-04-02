@@ -5,14 +5,13 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    env_file:
-      - .env-non-dev
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-python@v5
       with:
         python-version: '3.9'
     - run: pip install -r requirements.txt
+    - run: copy .env-non-dev .env
     - name: Run TestProject Agent
       run:
         docker-compose -f docker-compose.yml up -d
