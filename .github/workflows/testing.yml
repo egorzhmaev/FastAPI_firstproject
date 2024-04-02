@@ -5,6 +5,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env_file:
+      - .env-non-dev
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-python@v5
@@ -15,9 +17,3 @@ jobs:
       run:
         docker-compose -f docker-compose.yml up -d
     - run: pytest
-      env:
-        DB_HOST_TEST: db
-        DB_PORT_TEST: 1221
-        DB_NAME_TEST: tests
-        DB_USER_TEST: postgres
-        DB_PASS_TEST: postgres
