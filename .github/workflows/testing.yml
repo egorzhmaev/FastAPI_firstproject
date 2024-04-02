@@ -15,3 +15,9 @@ jobs:
       run:
         docker-compose -f docker-compose.yml up -d
     - run: pytest
+      env:
+        DB_HOST_TEST=db
+        DB_PORT_TEST=1221
+        DB_NAME_TEST=tests
+        DB_USER_TEST=postgres
+        DB_PASS_TEST=postgres
